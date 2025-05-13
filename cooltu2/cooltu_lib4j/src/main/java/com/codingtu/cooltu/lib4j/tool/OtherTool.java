@@ -13,12 +13,12 @@ public class OtherTool {
         return getParameterizedType(obj.getClass(), index);
     }
 
-    public static Class getFanxing(Object obj, int index) {
+    public static Class getGenericity(Object obj, int index) {
         Type type = getParameterizedType(obj.getClass(), index);
         return type instanceof Class ? (Class) type : null;
     }
 
-    public static Class getFanxing(Object obj) {
-        return getFanxing(obj, 0);
+    public static Class getGenericity(Object obj) {
+        return getGenericity(obj, 0);
     }
 }

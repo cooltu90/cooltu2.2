@@ -1602,7 +1602,7 @@ public abstract class CoreEs<E, THIS extends CoreEs> {
 
     public E[] toArray() {
         int count = count();
-        E[] newArray = (E[]) java.lang.reflect.Array.newInstance(OtherTool.getFanxing(this, 0), count);
+        E[] newArray = (E[]) java.lang.reflect.Array.newInstance(OtherTool.getGenericity(this, 0), count);
         if (count > 0) {
             for (int i = 0; i < count; i++) {
                 newArray[i] = this.es.get(i);

@@ -2,15 +2,12 @@ package com.codingtu.cooltu.processor.config;
 
 import com.codingtu.cooltu.constant.Pkg;
 import com.codingtu.cooltu.constant.Suffix;
-import com.codingtu.cooltu.lib4j.data.data.JavaInfo;
 import com.codingtu.cooltu.lib4j.es.BaseEs;
 import com.codingtu.cooltu.lib4j.es.Es;
-import com.codingtu.cooltu.lib4j.log.LibLogs;
 import com.codingtu.cooltu.lib4j.tool.ClassTool;
 import com.codingtu.cooltu.processor.SupportTypes;
-import com.codingtu.cooltu.processor.config.App;
 import com.codingtu.cooltu.processor.deal.base.BaseDeal;
-import com.codingtu.cooltu.processor.tool.DealerMap;
+import com.codingtu.cooltu.processor.container.DealerMap;
 import com.codingtu.cooltu.processor.tool.IdTool;
 import com.codingtu.cooltu.processor.tool.Logs;
 import com.google.auto.service.AutoService;
@@ -26,7 +23,6 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
-import javax.tools.Diagnostic;
 
 @AutoService(Processor.class)
 public class AppProcessor extends AbstractProcessor {

@@ -1,19 +1,18 @@
 package core.actbase;
 
+import com.codingtu.cooltu.ui.page.base.BaseActivity;
+
 public abstract class WelcomeActivityBase
-        extends com.codingtu.cooltu.ui.page.base.BaseActivity
+        extends BaseActivity
         implements
         android.view.View.OnClickListener,
         android.view.View.OnLongClickListener,
         com.codingtu.cooltu.lib4a.net.netback.NetBackI {
     private String baseClassName = "WelcomeActivityBase";
-    protected android.widget.RelativeLayout rootRl;
 
     @Override
     protected void onCreate(android.os.Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(com.codingtu.cooltu.R.layout.activity_welcome);
-        rootRl = findViewById(com.codingtu.cooltu.R.id.rootRl);
         String nowBaseClassName = getClass().getSimpleName() + com.codingtu.cooltu.constant.Suffix.ACT_BASE;
         if (nowBaseClassName.equals(baseClassName)) {
             onCreateComplete();

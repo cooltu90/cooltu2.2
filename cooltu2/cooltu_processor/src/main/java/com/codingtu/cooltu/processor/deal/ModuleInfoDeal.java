@@ -6,14 +6,12 @@ import com.codingtu.cooltu.constant.Pkg;
 import com.codingtu.cooltu.lib4j.tool.ClassTool;
 import com.codingtu.cooltu.processor.annotation.ModuleInfo;
 import com.codingtu.cooltu.processor.deal.base.TypeBaseDeal;
-import com.codingtu.cooltu.processor.tool.Logs;
 
 import javax.lang.model.element.TypeElement;
 
-public class ModuleInfoDeal extends TypeBaseDeal {
+public class ModuleInfoDeal extends TypeBaseDeal<ModuleInfo> {
     @Override
-    protected void dealTypeElement(TypeElement te) {
-        ModuleInfo moduleInfo = te.getAnnotation(ModuleInfo.class);
+    protected void dealTypeElement(String typeFullName, TypeElement te, ModuleInfo moduleInfo) {
         Module.CURRENT = moduleInfo.module();
         FullName.BASE_ACT = ClassTool.getAnnotationClass(new ClassTool.AnnotationClassGetter() {
             @Override
