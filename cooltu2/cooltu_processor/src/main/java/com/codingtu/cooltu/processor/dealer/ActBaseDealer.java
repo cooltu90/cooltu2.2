@@ -1,4 +1,4 @@
-package com.codingtu.cooltu.processor.deal;
+package com.codingtu.cooltu.processor.dealer;
 
 import com.codingtu.cooltu.constant.FullName;
 import com.codingtu.cooltu.constant.Pkg;
