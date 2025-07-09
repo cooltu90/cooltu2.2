@@ -134,6 +134,49 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
 
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    // permission
+    //
+    ///////////////////////////////////////////////////////
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        getBase().onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void back(int requestCode, String[] permissions, int[] grantResults) {
+
+    }
+
+    ///////////////////////////////////////////////////////
+    //
+    // whenkeydown
+    //
+    ///////////////////////////////////////////////////////
+
+    @Override
+    public void forbidKeyBack() {
+        getBase().forbidKeyBack();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        boolean b = getBase().onKeyDown(keyCode, event);
+        return b ? b : super.onKeyDown(keyCode, event);
+    }
+
+
+    ///////////////////////////////////////////////////////
+    //
+    // toast
+    //
+    ///////////////////////////////////////////////////////
+    @Override
+    public void toast(String str) {
+        getBase().toast(str);
+    }
 
     ///////////////////////////////////////////////////////
     //
@@ -142,10 +185,6 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
     ///////////////////////////////////////////////////////
 
 
-    @Override
-    public void forbidKeyBack() {
-        getBase().forbidKeyBack();
-    }
 
 
     /************************************************
@@ -163,16 +202,6 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
         getBase().setResultOk(this, data);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        getBase().onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
-
-    @Override
-    public void back(int requestCode, String[] permissions, int[] grantResults) {
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -180,16 +209,6 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
         getBase().onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        boolean b = getBase().onKeyDown(keyCode, event);
-        return b ? b : super.onKeyDown(keyCode, event);
-    }
-
-    @Override
-    public void toast(String str) {
-        getBase().toast(str);
-    }
 
 
 }

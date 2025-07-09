@@ -19,11 +19,11 @@ import java.util.List;
 
 public class CoreUiBase {
 
-    /**************************************************
-     *
-     * Permission
-     *
-     **************************************************/
+    ///////////////////////////////////////////////////////
+    //
+    // permission
+    //
+    ///////////////////////////////////////////////////////
     protected List<PermissionBack> permissionBacks;
 
     public List<PermissionBack> getPermissionBacks() {
@@ -83,11 +83,11 @@ public class CoreUiBase {
         });
     }
 
-    /**************************************************
-     *
-     * WhenKeyDown
-     *
-     **************************************************/
+    ///////////////////////////////////////////////////////
+    //
+    // WhenKeyDown
+    //
+    ///////////////////////////////////////////////////////
     protected List<WhenKeyDown> whenKeyDowns;
 
     protected List<WhenKeyDown> getWhenKeyDowns() {
@@ -119,11 +119,20 @@ public class CoreUiBase {
         return b[0];
     }
 
-    /**************************************************
-     *
-     * OnDestroy
-     *
-     **************************************************/
+    public void forbidKeyBack() {
+        addWhenKeyDown(new WhenBackKeyDown() {
+            @Override
+            public boolean onBack(KeyEvent event) {
+                return true;
+            }
+        });
+    }
+
+    ///////////////////////////////////////////////////////
+    //
+    // onDestory
+    //
+    ///////////////////////////////////////////////////////
     protected List<OnDestroy> onDestroys;
 
     public List<OnDestroy> getOnDestroys() {
@@ -147,15 +156,26 @@ public class CoreUiBase {
     }
 
 
-    /**************************************************
-     *
-     *
-     *
-     **************************************************/
+    public void onDestroy(CoreUiInterface coreUi) {
+        destroyAll();
+        ActivityManager.getInstance().remove(coreUi.getAct());
+    }
+
+
+    ///////////////////////////////////////////////////////
+    //
+    // toast
+    //
+    ///////////////////////////////////////////////////////
     public void toast(String str) {
         ToastTool.toast(str);
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    // finish
+    //
+    ///////////////////////////////////////////////////////
     public void finish(CoreUiInterface coreUi) {
         coreUi.beforeFinish();
         coreUi.superFinish();
@@ -169,6 +189,12 @@ public class CoreUiBase {
         coreUi.afterFinish();
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    // setResultOk
+    //
+    ///////////////////////////////////////////////////////
+
     public void setResultOk(CoreUiInterface coreUi) {
         coreUi.getAct().setResult(Activity.RESULT_OK);
     }
@@ -177,6 +203,11 @@ public class CoreUiBase {
         coreUi.getAct().setResult(Activity.RESULT_OK, data);
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    // create
+    //
+    ///////////////////////////////////////////////////////
     public void onCreate(CoreUiInterface coreUi, PermissionBack back) {
         addPermissionBack(back);
         ScreenAdaptationTool.setCustomDensity(coreUi.getAct());
@@ -188,19 +219,6 @@ public class CoreUiBase {
         StatusBarTool.translucentAndDark(act);
     }
 
-    public void onDestroy(CoreUiInterface coreUi) {
-        destroyAll();
-        ActivityManager.getInstance().remove(coreUi.getAct());
-    }
-
-    public void forbidKeyBack() {
-        addWhenKeyDown(new WhenBackKeyDown() {
-            @Override
-            public boolean onBack(KeyEvent event) {
-                return true;
-            }
-        });
-    }
 
     private ViewGroup rootView;
 
