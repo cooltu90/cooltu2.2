@@ -1,9 +1,9 @@
 package core.actbase;
 
-import com.codingtu.cooltu.ui.page.base.BaseActivity;
+import com.codingtu.cooltu.ui.page.BaseWelcomActivity;
 
 public abstract class WelcomeActivityBase
-        extends BaseActivity
+        extends BaseWelcomActivity
         implements
         android.view.View.OnClickListener,
         android.view.View.OnLongClickListener,

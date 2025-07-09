@@ -15,6 +15,11 @@ import com.codingtu.cooltu.lib4j.destory.OnDestroy;
 
 public class CoreActivity extends AppCompatActivity implements CoreActInterface {
 
+    ///////////////////////////////////////////////////////
+    //
+    // base
+    //
+    ///////////////////////////////////////////////////////
     protected CoreUiBase base;
 
     @Override
@@ -22,11 +27,32 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
         return this.base;
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    // act
+    //
+    ///////////////////////////////////////////////////////
     @Override
     public Activity getAct() {
         return this;
     }
 
+
+    ///////////////////////////////////////////////////////
+    //
+    // StatusBar
+    //
+    ///////////////////////////////////////////////////////
+    @Override
+    public void initStatusBar(Activity act) {
+        getBase().initStatusBar(act);
+    }
+
+    ///////////////////////////////////////////////////////
+    //
+    // create
+    //
+    ///////////////////////////////////////////////////////
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,13 +66,6 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        getBase().onDestroy(this);
-    }
-
-
-    @Override
     public void setContentView(int layoutResID) {
         super.setContentView(layoutResID);
         getBase().setContentView(this);
@@ -57,16 +76,32 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
 
     }
 
+    ///////////////////////////////////////////////////////
+    //
+    // destory
+    //
+    ///////////////////////////////////////////////////////
     @Override
-    public void forbidKeyBack() {
-        getBase().forbidKeyBack();
+    protected void onDestroy() {
+        super.onDestroy();
+        getBase().onDestroy(this);
     }
 
-    /********************************
-     *
-     * 对finish方法做扩展
-     *
-     ********************************/
+    @Override
+    public void addOnDestory(OnDestroy onDestroy) {
+        getBase().add(onDestroy);
+    }
+
+    @Override
+    public void destroyAll() {
+        getBase().destroyAll();
+    }
+
+    ///////////////////////////////////////////////////////
+    //
+    // 对finish方法做扩展
+    //
+    ///////////////////////////////////////////////////////
     @Override
     public void finish() {
         getBase().finish(this);
@@ -99,10 +134,19 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
 
     }
 
+
+    ///////////////////////////////////////////////////////
+    //
+    // 分割
+    //
+    ///////////////////////////////////////////////////////
+
+
     @Override
-    public void initStatusBar(Activity act) {
-        getBase().initStatusBar(act);
+    public void forbidKeyBack() {
+        getBase().forbidKeyBack();
     }
+
 
     /************************************************
      *
@@ -147,14 +191,5 @@ public class CoreActivity extends AppCompatActivity implements CoreActInterface 
         getBase().toast(str);
     }
 
-    @Override
-    public void addOnDestory(OnDestroy onDestroy) {
-        getBase().add(onDestroy);
-    }
-
-    @Override
-    public void destroyAll() {
-        getBase().destroyAll();
-    }
 
 }
